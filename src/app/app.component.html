@@ -1,0 +1,40 @@
+<h3>{{title}}</h3>
+<form [formGroup]="myForm" (ngSubmit)="getData()">
+    <table>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email" formControlName="uEmail">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <!-- Show if uEmail is defined and uEmail is invalid -->
+                <span *ngIf="uEmail && uEmail.invalid && uEmail.touched" style="color: red;">*Valid email is required.</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input type="password" formControlName="uPass">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <!-- Show if uPass is defined and uPass is invalid -->
+                <span *ngIf="uPass && uPass.invalid && uPass.touched" style="color: red;">*Valid password is required.</span>
+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button [disabled]="myForm.invalid">Login</button>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h3>{{data | json}}</h3>
+</form>
